@@ -9,7 +9,7 @@ const routes = require('./routes');
 const init = async () => {
   const server = Hapi.Server({
     port: 5000,
-    host: 'localhost',
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0', // supaya host menentukan sendiri sesuai environment
     routes: {
       cors: {
         origin: ['*'], // membuat data pada notes dapat dikonsumsi oleh luar
